@@ -1,0 +1,31 @@
+{
+  "name": "real-time-web-project",
+  "version": "1.0.0",
+  "description": "Twitter app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/japgroevemaker/real-time-web-project.git"
+  },
+  "author": "Joep Gravemaker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/japgroevemaker/real-time-web-project/issues"
+  },
+  "homepage": "https://github.com/japgroevemaker/real-time-web-project#readme",
+  "dependencies": {
+    "ejs": "^2.5.8",
+    "express": "^4.16.3",
+    "install": "^0.11.0",
+    "npm": "^5.8.0",
+    "socket.io": "^2.1.0",
+    "twit": "^2.2.9",
+    "twitter-stream-api": "^0.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  }
+}
