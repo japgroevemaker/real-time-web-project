@@ -4,6 +4,7 @@ var bodyParser = require('body-parser')
 var app = express()
 var socket = require("socket.io")
 var Twit = require("twit")
+var fs = require('fs');
 
 
 //static files
@@ -25,22 +26,30 @@ var T = new Twit({
   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
 })
 
+var Amsterdam = [4.858803,52.348957,4.936988,52.393874]
+
 var params = {
-  track: 'Amsterdam',
-  language: 'nl'
+  // track: 'Amsterdam',
+  locations: Amsterdam
+  // language: 'nl'
 }
+
 
 var stream = T.stream('statuses/filter', params);
 
+
 stream.on('tweet', function (tweet){
+  // console.log(tweet);
+  // socket.emit("newTweet", tweet)
   if (tweet.retweeted_status) {
     console.log("");
     console.log("Retweet");
     console.log("");
     if (tweet.retweeted_status.extended_tweet){
       console.log(tweet.retweeted_status.extended_tweet.full_text);
+      // io.sockets.emit("tweet", stream)
     } else {
-
+      // io.sockets.emit("tweet", stream)
       console.log(tweet.text);
     }
   }
@@ -50,14 +59,33 @@ stream.on('tweet', function (tweet){
     console.log('Tweet');
     console.log("");
     console.log(tweet.text);
+// io.sockets.emit("tweet", stream)
+    var cleanData = `{
+      createdAt: ${tweet.created_at}
+      user: ${tweet.user.name},
+      tweet: ${tweet.text},
+      language: ${tweet.lang}
+    }`
+
+    fs.appendFile('public/tweets.txt', cleanData + ",", function (err) {
+  if (err) throw err;
+  console.log('Updated!');
+});
   }
 });
 
-stream.on('tweet', function (tweet, stream, gotData){
+stream.on('tweet', function (tweet, stream){
+  // io.sockets.emit("tweet", stream)
+})
+
+var io = socket(server);
+
+io.on('connection', function(socket){
+  socket.on('tweet', function(data){
+    io.sockets.emit('tweet', data)
+  })
 })
 
 var server = app.listen(3333, function() {
   console.log('Executed at port 3333');
 });
-
-// var io = socket(server);

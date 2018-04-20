@@ -23,3 +23,8 @@ This repo will hold the project you're going to build during the last two weeks 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
 
 <!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
+
+# Concept
+I'm using the Twitter API and the thing i want to do with it is that i'm searching tweets on GEO locations.
+At the same time i'm tracking tweets in diffrent languages so you can see wich nationalities are on that particular locations.
+So for example, i'm typing amsterdam as my location, at that point i can see how many nationalities are tweeting in Amsterdam. 
