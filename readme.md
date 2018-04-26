@@ -40,10 +40,10 @@ var Twit = require("twit")
 In my express server. The next thing i did was getting acces to my created Twitter app.
 ```js
 var T = new Twit({
-  consumer_key:         'roz8tFgK8w9elwL1K8dmpZSlt',
-  consumer_secret:      'mrIwaSIUK9LcIT5wYiujA2WNXWMJPvoupqHRVnf3TXMsPY7805',
-  access_token:         '741148952851034112-ETDOWGB8P1fkOLcf02Y28szagRBSYds',
-  access_token_secret:  'aB3fNVspjonDDXUVERns9ElHnPebJ9eQ3G8LeTTzRMLaU',
+  consumer_key:         '123124141234123124',
+  consumer_secret:      'ksdhjahflauehfuiewh123127805',
+  access_token:         ';WEHFkjhaskjdfhaslkfhslajhf',
+  access_token_secret:  'aljsdbfahjsdfkhjasdfgkjhsadgfkhjasdgfU',
   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
 })
 ```
