@@ -1,0 +1,62 @@
+body{
+  background-color: #0099ff;
+  font-family: helvetica ,sans-serif;
+}
+
+#tweets{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#tweets section{
+  background-color: #fff;
+  width: 27em;
+  padding: 1em;
+  height: auto;
+  margin: 0.5em;
+  box-shadow: 5px 5px 9px -3px rgba(0,0,0,0.13);
+  animation-name: fade;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  border-radius: 0.1em;
+}
+
+#language{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 90%;
+  justify-content: center;
+  margin: auto;
+}
+
+#language div{
+  display: flex;
+  margin-right: 1em;
+  flex-direction: row;
+  background-color: #fff;
+  padding: 0.5em 1em;
+  box-shadow: 5px 5px 9px -3px rgba(0,0,0,0.13);
+}
+
+#language div p {
+  font-size: 1.3em;
+}
+
+section img{
+  border-radius: 50%
+}
+
+
+
+.fade{
+  opacity: 1;
+  transition: all 2s;
+}
+
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1};
+}
