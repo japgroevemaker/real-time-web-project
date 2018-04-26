@@ -52,7 +52,7 @@ Then i needed to set on wich tweets i wanted to search. I created a [Bounding bo
 ```js
 var Amsterdam = [4.858803,52.348957,4.936988,52.393874]
 ```
-![Bounding box](https://github.com/japgroevemaker/real-time-web-project/image/RTW1.jpg)
+![Bounding box](https://github.com/japgroevemaker/real-time-web-project/blob/master/image/RTW1.jpg)
 
 And then i putted the variabel in the params and i made sure that the params were streamed.
 
