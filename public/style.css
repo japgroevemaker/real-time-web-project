@@ -1,9 +1,15 @@
 body{
-  background-color: #0099ff;
   font-family: helvetica ,sans-serif;
+  text-align: center;
 }
 
 #tweets{
+  z-index: 3;
+  width: 85%;
+  margin: 1em auto;
+  position: absolute;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -12,24 +18,33 @@ body{
 
 #tweets section{
   background-color: #fff;
-  width: 27em;
+  width: 27.4em;
   padding: 1em;
   height: auto;
-  margin: 0.5em;
-  box-shadow: 5px 5px 9px -3px rgba(0,0,0,0.13);
+  border: solid 0.001em #f2f2f2;
   animation-name: fade;
   animation-duration: 0.5s;
   animation-timing-function: ease-in-out;
-  border-radius: 0.1em;
+  box-shadow: 10px 10px 27px -8px rgba(0,0,0,0.18); */
+}
+
+button{
+  border: 0;
+  color: #fff;
+  background-color: #000;
+  width: 5em;
+  height: 3em;
+  outline: 0;
+  cursor: pointer;
 }
 
 #language{
+  justify-content: center;
+  width: 90%;
   display: flex;
+  margin: 1em auto;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 90%;
-  justify-content: center;
-  margin: auto;
 }
 
 #language div{
@@ -38,7 +53,15 @@ body{
   flex-direction: row;
   background-color: #fff;
   padding: 0.5em 1em;
-  box-shadow: 5px 5px 9px -3px rgba(0,0,0,0.13);
+  cursor: pointer;
+  border: solid 0.001em #f2f2f2;
+  box-shadow: 0px 1px 1px #888
+}
+
+.div-active{
+  background-color: #000 !important;
+  color: #fff;
+  transition: all 0.2s;
 }
 
 #language div p {
@@ -46,7 +69,8 @@ body{
 }
 
 section img{
-  border-radius: 50%
+  border-radius: 50%;
+  box-shadow: 0px 1px 1px #888;
 }
 
 
@@ -59,4 +83,8 @@ section img{
 @keyframes fade {
   from {opacity: 0;}
   to {opacity: 1};
+}
+
+.none{
+  display: none!important
 }

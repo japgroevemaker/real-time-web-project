@@ -2,10 +2,9 @@ var express = require('express')
 var ejs = require('ejs')
 var bodyParser = require('body-parser')
 var app = express()
-var socket = require("socket.io")
+var socket = require("socket.io");
 var Twit = require("twit")
 var fs = require('fs');
-
 
 //static files
 
@@ -14,7 +13,7 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'));
 
 app.get("/", function(req, res) {
-  res.render("index");
+  res.render("index", {location: location.push(Amsterdam)});
 })
 
 
@@ -27,7 +26,9 @@ var T = new Twit({
 })
 
 var Amsterdam = [4.858803,52.348957,4.936988,52.393874]
+var newYork = [-74.259087,40.477398,-73.70018,40.91618]
 
+var location = []
 
 var params = {
   locations: Amsterdam
@@ -47,7 +48,7 @@ io.on('connection', function(socket){
   console.log('user connected', socket.id);
   stream.on('tweet', function(tweet){
     console.log(tweet.text);
-      io.sockets.emit('tweet', tweet)
+      socket.emit('tweet', tweet)
     })
 })
 

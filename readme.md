@@ -24,7 +24,7 @@ This repo will hold the project you're going to build during the last two weeks 
 
 <!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
 
-[Live demo](https://real-time-web-project-bmlhbvvxyk.now.sh)
+[Live demo](https://real-time-web-project-nswjbzrtpt.now.sh)
 
 # Concept
 I'm using the Twitter API and the thing i want to do with it is that i'm searching tweets on GEO locations.
@@ -98,6 +98,7 @@ When this was working i started to create elements within my ```index.ejs```. Wh
 ```js
 var container = document.getElementById('tweets')
 var tweetBox = document.createElement('section');
+tweetBox.classList.add(stream.lang)
 var leftSide = document.createElement('div');
 var rightSide = document.createElement('div');
 var user = document.createElement('h1');
@@ -207,8 +208,58 @@ function searchFlag(landCode) {
   }
 }
 ```
+## Making a filter
+Because i needed to implement user interaction, i wanted to add an filter. When the user taps a specific language, it only needs to show that particular language.
+So for example: If there are 2 english tweets and 1 Dutch tweet, i click on the english flag and only the english tweets will display. I also added an clear button so that the user can display all the tweets again. At first i made an ```function()```.
+Back in this readme i gave the ```tweetBox``` element a class: ```tweetBox.classList.add(stream.lang)``` wich gives it a class with a name of the language. Down in this ```function()``` a ```var that = this.id``` had been made, wich looks wich id the section has. With the ```.contains(that)``` it checks wich id the section has and add or removes a class from the section.
+
+```js
+unction displaySingleCountry(){
+  // Checks id
+  var that = this.id,
+    activeLang = document.querySelector("#language div.div-active")
+    // Checks if a language is active
+    if(activeLang) {
+      // If active remove class
+      activeLang.classList.remove('div-active')
+    }
+    // Looping trough sections
+  for (var i = 0; i < document.querySelectorAll("#tweets section").length; i++) {
+    // Adding a class
+    document.querySelectorAll("#tweets section")[i].classList.add("none")
+    // Checks if element contains class that
+    if (document.querySelectorAll("#tweets section")[i].classList.contains(that)) {
+      checked = that
+      document.querySelectorAll("#tweets section")[i].classList.remove("none")
+      document.querySelector("#language div#"+that).classList.add('div-active')
+    }
+  }
+}
+```
+Further down in my code i do this. i make a new ```var``` wich selects all the divs in the ```#language``` section. Then i put an event listener on it, wich executes the function.
+```js
+var lastLang = document.querySelector( '#language > div' );
+lastLang.addEventListener("click", displaySingleCountry)
+```
+At last i made an clear button wich clears al the ```display: none;``` from all the sections and shows all the tweets again.
+```js
+document.querySelector("button").addEventListener("click", function(){
+  checked = "all"
+  for (var i = 0; i < document.querySelectorAll("#tweets section").length; i++) {
+    document.querySelectorAll("#tweets section")[i].classList.remove("none")
+  }
+    var activeLang = document.querySelector("#language div.div-active")
+    if(activeLang) {
+      activeLang.classList.remove('div-active')
+    }
+})
+```
+
 ## Conclusion
 I really learned a lot throughout this project. I learned a bit more about the use of ```sockets``` and the use of an real-time API and it isn't that difficult at all! I really enjoyed this project.
 
 ## Is there something i wanted to add?
 Yes there is! As i explained above, i want to add an emoji API so that i can link that to the tweet language. I also would like to add an filter, that when i click on a flag it only displays the tweets in that particular language. But that is something for the future!
+
+- [ ] Add emoji API
+- [x] Add filter
